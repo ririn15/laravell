@@ -14,6 +14,57 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/testmodel', function () {
+     $query = App\Post::all();
+     return $query;
+});
+Route::get('/testmodel2', function () {
+    $query = App\Post::find(1);
+    return $query;
+});
+Route::get('/testmodel3', function () {
+    $query = App\Post::where('title','like','%Contoh title 1%')->get();
+    return $query;
+});
+Route::get('/testmodel4', function () {
+    $query = App\Post::find(2);
+    $query->title="Contoh title 2";
+    $query->save();
+    return $query;
+});
+Route::get('/testmodel5', function () {
+    $query = App\Post::find(1);
+    $query->delete();
+});
+Route::get('/testmodel6', function () {
+    $query = App\Post;
+    $query->title="Contoh title 4";
+    $query->content = "lorem ipsum";
+    $query->save();
+    return $query;
+});
+Route::get('profil/2', function () {
+    return 'Halo';
+});
+Route::get('profil/3', function () {
+    return 'Halo';
+});
+
+
+
+Route::get('/testmodel4', function () {
+    $query = App\Post::find(2);
+    $query->title="Contoh title 2";
+    $query->save();
+    return $query;
+});
+
+
+
+
+
+
+
 
 //Route basic
 Route::get('hallo',function()
