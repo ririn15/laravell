@@ -15,7 +15,7 @@ class Siswa extends Migration
     {
 
 schema::create('siswa',function( Blueprint $table){
-    $table->bigIncrement('id');
+    $table->bigIncrements('id');
     $table->string('nama');
 $table->string('nis');
 $table->string('jns_kelamin');
