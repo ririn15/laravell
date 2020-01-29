@@ -66,6 +66,8 @@ Route::get('/testmodel4', function () {
 
 
 
+
+
 //Route basic
 Route::get('hallo',function()
 {
@@ -144,3 +146,103 @@ Route::get('TNI/{a?}/{b?}/{c?}',function($nama=null, $bb=null, $umur=null){
        }
     }
 });
+
+
+Route::get('testmodel/1',function()
+{
+    // select * from posts
+    $query = App\Post::all();
+    return $query;
+});
+
+
+Route::get('testmodel/2',function()
+{
+    // select * from posts
+    $query = App\Post::find(1);
+    return $query;
+});
+
+Route::get('testmodel/3',function()
+{
+    // select * from posts
+    $query = App\Post::where('title','like','%cepat nikah%')->get();
+    return $query;
+});
+
+Route::get('testmodel/4',function()
+{
+    // select * from posts
+    $post = App\Post::find(1);
+    $post->title = "Ciri Keluarga Sakinah";
+    $post->save();
+    return $post;
+});
+
+Route::get('testmodel/5',function()
+{
+    // select * from posts
+    $post = App\Post::find(1);
+    $post->delete();
+});
+
+Route::get('testmodel/6',function()
+{
+    // select * from posts
+    $post = new App\Post;
+    $post->title = "7 Amalan Pembuka Jodoh";
+    $post->content = "shalat malam, sedekah, puasa sunah, silaturahmi, senyum, doa, tobat";
+    $post->save();
+    return $post;
+});
+
+
+Route::get('first',function(){
+    $data = App\Biodata::select('id','nama','hobi')
+    ->first();
+    return $data;
+});
+
+
+Route::get('tiga',function()
+{
+    // select * from posts
+    $query = App\Biodata::all()
+    ->take(3);
+    ;
+    return $query;
+});
+
+Route::get('input/{nis}/{nama}/{alamat}/{jenis_kelamin}/{tempat_lahir}/{tanggal_lahir}/{hobi}',function($nis,$nama,$alamat,$jenis_kelamin,$tempat_lahir,$tanggal_lahir,$hobi)
+{
+    $data = new App\Biodata;
+    $data->nis = $nis;
+    $data->nama = $nama;
+    $data->alamat = $alamat;
+    $data->jenis_kelamin = $jenis_kelamin;
+    $data->tempat_lahir = $tempat_lahir;
+    $data->tanggal_lahir = $tanggal_lahir;
+    $data->hobi = $hobi;
+    $data->save();
+    return $data;
+});
+
+Route::get('latihan','LatihanController@halo');
+Route::get('tambah/{a?}/{b?}','LatihanController@tambah');
+Route::get('kurang/{a?}/{b?}','LatihanController@kurang');
+Route::get('kali/{a?}/{b?}','LatihanController@kali');
+Route::get('bagi/{a?}/{b?}','LatihanController@bagi');
+Route::get('pertambahan/{a?}/{b?}','LatihanController@pertambahan');
+Route::get('pengurangan/{a?}/{b?}','LatihanController@pengurangan');
+Route::get('perkalian/{a?}/{b?}','LatihanController@perkalian');
+Route::get('pembagian/{a?}/{b?}','LatihanController@pembagian');
+Route::get('data-1','LatihanController@loop');
+Route::get('data-2','LatihanController@data');
+
+//CRUD TABUNGAN
+Route::get('Tabungan','TabunganController@index');
+Route::get('Tabungan/{$id}','TabunganController@show');
+Route::get('Tabungan-tambah/{nis}/{nama}/{kelas}/{jumlah}','TabunganController@store');
+Route::get('Tabungan-update/{id}/{nis}/{nama}/{kelas}/{jumlah}','TabunganController@edit');
+
+?>
