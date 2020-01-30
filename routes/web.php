@@ -245,4 +245,7 @@ Route::get('Tabungan/{$id}','TabunganController@show');
 Route::get('Tabungan-tambah/{nis}/{nama}/{kelas}/{jumlah}','TabunganController@store');
 Route::get('Tabungan-update/{id}/{nis}/{nama}/{kelas}/{jumlah}','TabunganController@edit');
 
-?>
+//passing data
+Route::get('pass','PracticeController@pass');
+Route::get('pass1','PracticeController@pass1');
+Route::get('pass-tabungan','PracticeController@pass2');
