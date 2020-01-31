@@ -10,24 +10,32 @@ class TabunganController extends Controller
     //
 public function index()
 {
-    $Tabungan = Tabungan::all();
-    return $Tabungan;
+    $osis = osis::all();
+    return $osis;
 
 }
 public function show ($id)
 {
-    $Tabungan = Tabungan::find($id);
-    return $Tabungan;
+    $osis = osis::find($id);
+    return $osis;
 }
 public function store($id=null,$nis=null,$nama=null,$kelas=null,$jumlah=null)
 {
-    $Tabungan = new Tabungan();
-    $Tabungan->nis = "nis";
-    $Tabungan->nama = "nama";
-    $Tabungan->kelas = "kelas";
-    $Tabungan->jumlah = "jumlah";
-    $Tabungan->save();
-    return $Tabungan;
+    $n = new osis();
+    $osis->nama_lengkap = "nama lengkap";
+    $osis->nis = "nis";
+    $osis->ttl = "ttl";
+    $osis->agama = "agama";
+    $osis->alamat = "alamat";
+    $osis->notel = "notel";
+    $osis->kelas = "kelas";
+    $osis-> = "";
+    $osis-> = "";
+    $osis-> = "";
+
+
+    $osis->save();
+    return $osis;
 }
 public function delete ($id){
     $tabungan = \App\Tabungan::find($id);
